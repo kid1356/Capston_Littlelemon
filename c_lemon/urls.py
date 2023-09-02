@@ -22,7 +22,7 @@ from restaurant.views import BookingViewSet,UserView
 
 router = routers.DefaultRouter()
 router.register(r'tables',views.BookingViewSet)
-router.register(r'users',views.UserView)
+# router.register(r'users',views.UserView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,4 +30,6 @@ urlpatterns = [
     path('restaurant/booking/',include(router.urls)),
     # path('',include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.authtoken'))
 ]
