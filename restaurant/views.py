@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render
 from django.contrib.auth.models import User
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import  generics,viewsets,permissions
@@ -8,6 +8,7 @@ from .form import BookingForm
 from django.urls import reverse_lazy
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.edit import CreateView
+from django import http
 # Create your views here.
 def home(request):
     return render(request, 'index.html')
@@ -31,13 +32,16 @@ def display_menu_item(request, pk=None):
 @csrf_exempt
 def book(request):
     if request.method == 'POST':
+        
         form = BookingForm(request.POST)
+        print(form)
+
         if form.is_valid():
-            form.save()  # This will save the data to the database
-            return redirect('success_page')  # Redirect to a success page
+            form.save()
+            return http.HttpResponseRedirect('/restaurant/book/')
+            # return redirect('success_page')  # Redirect to a success page
     else:
         form = BookingForm()
-
     context = {'form': form}
     return render(request, 'book.html', context)
 

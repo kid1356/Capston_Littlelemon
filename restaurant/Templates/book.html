@@ -10,10 +10,10 @@
       <!--Begin col-->
       <div class="column">
           <!-- {% csrf_token %} -->
-          <form method="POST" action ="" id="form" onsubmit="btn(event)">
+          <form method="POST"  action ="{% url 'book' %}" id="form">
             {% csrf_token %}
             {{form.as_p}}
-            <button type="submit" id="button">Reserve</button>
+            <button type="submit" onclick="return btn(event)" id="button">Reserve</button>
           </form>
       </div>
       <!--End col-->
@@ -33,23 +33,4 @@
   </article>
 </section>
 
-
-<script>
-   function btn(event) {
-    var form = document.getElementById('form');
-    
-    if (form.checkValidity()) {
-        alert('Thanks for Reservation');
-        form.reset(); // Reset the form
-    } else {
-        alert('Fields are required');
-    }
-
-    event.preventDefault(); // Prevent the default form submission
-}
-    // function resertform(){
-    //     document.getElementById("form").reset();
-    //     return true; 
-    // }
-</script>
 {% endblock %}
