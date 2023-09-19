@@ -1,0 +1,39 @@
+<style>
+ .closebtn {
+    float: right;
+    cursor: pointer;
+    padding: 2px 5px;
+    margin: 5px;
+    font-size: 20px;
+    line-height: 1;
+    color:white;
+}
+
+/* Hover effect for close button (optional) */
+.closebtn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+}
+
+
+</style>
+
+{% if messages %}
+    <ul class="messages" >
+        {% for message in messages %}
+            <li class="{{ message.tags }}" style="background-color:  #495E57; color: white; margin-left: 10px;padding: 10px ; border-radius: 20px;">
+                <span class="closebtn" onclick="removeMessage(this)">&times;</span>
+                {{ message }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<script>
+    function removeMessage(button) {
+   
+    const messageItem = button.parentElement;
+    messageItem.style.display = 'none'; // Hide the message item
+    
+}
+</script>

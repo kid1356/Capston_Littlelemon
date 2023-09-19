@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib import messages
 from django.contrib.auth.models import User
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import  generics,viewsets,permissions
@@ -34,12 +35,15 @@ def book(request):
     if request.method == 'POST':
         
         form = BookingForm(request.POST)
-        print(form)
 
         if form.is_valid():
             form.save()
+            messages.success(request,"Thanks for Reservation")
             return http.HttpResponseRedirect('/restaurant/book/')
             # return redirect('success_page')  # Redirect to a success page
+        else:
+            messages.error(request, 'Invalid form submission.')
+            messages.error(request, form.errors)
     else:
         form = BookingForm()
     context = {'form': form}

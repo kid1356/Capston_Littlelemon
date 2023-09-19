@@ -10,10 +10,11 @@
       <!--Begin col-->
       <div class="column">
           <!-- {% csrf_token %} -->
+          {% include 'messages.html' %}
           <form method="POST"  action ="{% url 'book' %}" id="form">
             {% csrf_token %}
             {{form.as_p}}
-            <button type="submit" onclick="return btn(event)" id="button">Reserve</button>
+            <button type="submit"  id="button">Reserve</button>
           </form>
       </div>
       <!--End col-->
@@ -32,5 +33,6 @@
 
   </article>
 </section>
+
 
 {% endblock %}
