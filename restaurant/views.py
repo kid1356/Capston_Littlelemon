@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
 from rest_framework.permissions import IsAuthenticated
@@ -39,8 +39,8 @@ def book(request):
         if form.is_valid():
             form.save()
             messages.success(request,"Thanks for Reservation")
-            return http.HttpResponseRedirect('/restaurant/book/')
-            # return redirect('success_page')  # Redirect to a success page
+            # return http.HttpResponseRedirect('/restaurant/book/')
+            return redirect('/restaurant/book/')  # Redirect to a success page
         else:
             messages.error(request, 'Invalid form submission.')
             messages.error(request, form.errors)

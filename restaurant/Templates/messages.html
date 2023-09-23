@@ -5,7 +5,7 @@
     padding: 2px 5px;
     margin: 5px;
     font-size: 20px;
-    line-height: 1;
+    line-height: 0.6;
     color:white;
 }
 
@@ -21,7 +21,8 @@
 {% if messages %}
     <ul class="messages" >
         {% for message in messages %}
-            <li class="{{ message.tags }}" style="background-color:  #495E57; color: white; margin-left: 10px;padding: 10px ; border-radius: 20px;">
+            <li class="{{ message.tags }}" style="background-color:  #495E57; color: white; margin-left: 0px;margin-right: 200px; 
+                                                  padding: 10px ; border-radius: 20px;text-align: center;">
                 <span class="closebtn" onclick="removeMessage(this)">&times;</span>
                 {{ message }}
             </li>
